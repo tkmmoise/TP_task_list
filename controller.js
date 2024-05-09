@@ -1,23 +1,23 @@
-// controller.js
-
 class TaskController {
   constructor(model, view) {
-      this.model = model;
-      this.view = view;
+    this.model = model;
+    this.view = view;
 
-      this.view.bindAddTask(this.handleAddTask.bind(this));
+    this.view.bindAddTask(this.handleAddTask.bind(this));
 
-      this.updateView();
+    this.updateView();
   }
 
-  handleAddTask(name, description) {
-      this.model.addTask(name, description);
-      this.updateView();
+  handleAddTask(name, description, category) {
+    console.log(name, description, category);
+    this.model.addTask(name, description, category);
+    console.log(this.model.tasks);
+    this.updateView();
   }
 
   updateView() {
-      const tasks = this.model.tasks;
-      this.view.displayTasks(tasks);
+    const tasks = this.model.tasks;
+    this.view.displayTasks(tasks);
   }
 }
 

@@ -46,7 +46,10 @@ class TaskList {
   }
 
   addTask(name, description, category) {
-    let task = new AdvancedTaskModel(name, description, category)
+    if (!name || !description || !category) {
+      throw new Error("Name, description, and category are required.");
+    }
+    let task = new AdvancedTaskModel(name, description, category);
     this.tasks.push(task);
   }
 }
