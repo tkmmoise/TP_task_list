@@ -1,0 +1,27 @@
+// controller.js
+
+class TaskController {
+  constructor(model, view) {
+      this.model = model;
+      this.view = view;
+
+      this.view.bindAddTask(this.handleAddTask.bind(this));
+
+      this.updateView();
+  }
+
+  handleAddTask(name, description) {
+      this.model.addTask(name, description);
+      this.updateView();
+  }
+
+  updateView() {
+      const tasks = this.model.tasks;
+      this.view.displayTasks(tasks);
+  }
+}
+
+// App initialization
+const model = new TaskList();
+const view = new TaskView();
+const controller = new TaskController(model, view);
